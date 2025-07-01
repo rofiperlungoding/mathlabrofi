@@ -1,0 +1,267 @@
+/* Responsive layout system for desktop and mobile views */
+
+/* Base mobile-first approach */
+:root {
+  --container-padding: 1rem;
+  --container-max-width: 100%;
+  --card-padding: 1rem;
+  --section-spacing: 2.5rem;
+  --component-spacing: 1.5rem;
+  --element-spacing: 1rem;
+  --grid-gap: 1rem;
+  --border-radius: 0.75rem;
+  --header-height: 4rem;
+}
+
+/* Tablet breakpoint (md/tablet: 768px) */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 1.5rem;
+    --container-max-width: 720px;
+    --card-padding: 1.5rem;
+    --section-spacing: 3.5rem;
+    --component-spacing: 2rem;
+    --element-spacing: 1.25rem;
+    --grid-gap: 1.5rem;
+    --header-height: 4.5rem;
+  }
+  
+  /* Tablet-specific layout adjustments */
+  .tablet-flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .tablet-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap);
+  }
+  
+  .tablet-show {
+    display: block;
+  }
+  
+  .tablet-hide {
+    display: none;
+  }
+}
+
+/* Desktop breakpoint (lg/desktop: 1024px) */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2rem;
+    --container-max-width: 960px;
+    --card-padding: 2rem;
+    --section-spacing: 5rem;
+    --component-spacing: 3rem;
+    --element-spacing: 1.5rem;
+    --grid-gap: 2rem;
+    --header-height: 5rem;
+  }
+  
+  /* Desktop-specific layouts */
+  .desktop-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+  }
+  
+  .desktop-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+  }
+  
+  .desktop-sidebar-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--grid-gap);
+  }
+  
+  .desktop-app-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: var(--grid-gap);
+  }
+  
+  /* Specific desktop styles */
+  .desktop-fixed-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+  }
+  
+  .desktop-card-hover {
+    transition: all 0.2s ease-out;
+  }
+  
+  .desktop-card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Enhanced desktop navigation */
+  .desktop-nav {
+    height: var(--header-height);
+    padding: 0 var(--container-padding);
+  }
+  
+  /* Desktop padding and spacing overrides */
+  .desktop-p-8 {
+    padding: 2rem;
+  }
+  
+  .desktop-my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Desktop text size overrides */
+  .desktop-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .desktop-text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .desktop-text-2xl {
+    font-size: 1.5rem;
+  }
+}
+
+/* Large desktop breakpoint (xl/widescreen: 1280px) */
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: 2.5rem;
+    --container-max-width: 1200px;
+    --card-padding: 2.5rem;
+    --section-spacing: 6rem;
+    --component-spacing: 3.5rem;
+    --element-spacing: 2rem;
+    --grid-gap: 2.5rem;
+  }
+  
+  /* Widescreen layouts */
+  .widescreen-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+  }
+  
+  .widescreen-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--grid-gap);
+  }
+  
+  .widescreen-sidebar-layout {
+    grid-template-columns: 320px 1fr;
+  }
+  
+  /* Widescreen typography */
+  .widescreen-text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .widescreen-text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  .widescreen-text-4xl {
+    font-size: 2.25rem;
+  }
+}
+
+/* Ultrawide breakpoint (2xl/ultrawide: 1536px) */
+@media (min-width: 1536px) {
+  :root {
+    --container-padding: 3rem;
+    --container-max-width: 1400px;
+  }
+  
+  .ultrawide-max-width {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .ultrawide-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--grid-gap);
+  }
+}
+
+/* Container classes with max-width and proper padding */
+.container-fluid {
+  width: 100%;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Responsive sizing utilities */
+.responsive-w-full {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .responsive-w-full {
+    width: auto;
+  }
+}
+
+/* App-specific responsive layouts */
+.app-layout-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .app-layout-container {
+    flex-direction: row;
+  }
+  
+  .app-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+  }
+  
+  .app-content {
+    flex: 1;
+  }
+}
+
+/* Center alignment for cards and grids in math apps */
+.math-app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.math-app-grid {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (min-width: 1024px) {
+  .math-app-grid {
+    max-width: none;
+    overflow-x: visible;
+  }
+}

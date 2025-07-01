@@ -1,0 +1,891 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KaTeX CSS */
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css');
+
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  body {
+    @apply text-neutral-800 bg-neutral-50 antialiased;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .dark body {
+    @apply text-neutral-200 bg-neutral-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  p {
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Minimalist Button System */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 dark:focus:ring-offset-neutral-900;
+    will-change: transform, background-color, box-shadow;
+  }
+  
+  .btn-primary {
+    @apply bg-neutral-900 text-white hover:bg-neutral-800 shadow-sm hover:shadow-md dark:bg-blue-600 dark:hover:bg-blue-700 transform hover:scale-102 active:scale-98;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-neutral-700 border border-neutral-200 hover:bg-neutral-50 hover:border-neutral-300 shadow-sm dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-700 dark:hover:bg-neutral-700 dark:hover:border-neutral-600 transform hover:scale-102 active:scale-98;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white transform hover:scale-102 active:scale-98;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  
+  /* Minimalist Card System */
+  .card {
+    @apply bg-white border border-neutral-200 rounded-2xl transition-all duration-200 ease-out dark:bg-neutral-800 dark:border-neutral-700;
+    will-change: background-color, border-color, box-shadow;
+  }
+  
+  .card-hover {
+    @apply hover:border-neutral-300 hover:shadow-sm dark:hover:border-neutral-600;
+  }
+  
+  .card-elevated {
+    @apply shadow-sm border-neutral-300 dark:border-neutral-600 dark:shadow-neutral-900/50;
+  }
+  
+  .card-minimal {
+    @apply border-0 bg-neutral-50 dark:bg-neutral-900;
+  }
+  
+  /* Clean Input System */
+  .input {
+    @apply w-full px-4 py-3 text-sm bg-white border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all duration-200 ease-out dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:focus:ring-neutral-500;
+  }
+  
+  .input-ghost {
+    @apply border-transparent bg-neutral-50 focus:bg-white focus:border-neutral-200 dark:bg-neutral-900 dark:focus:bg-neutral-800 dark:focus:border-neutral-700;
+  }
+  
+  .input-sm {
+    @apply px-3 py-2 text-xs rounded-lg;
+  }
+  
+  /* Typography Scale */
+  .text-display {
+    @apply text-4xl font-medium text-neutral-900 leading-tight dark:text-neutral-100;
+    transition: color 0.3s ease;
+  }
+  
+  .text-title {
+    @apply text-2xl font-medium text-neutral-900 dark:text-neutral-100;
+    transition: color 0.3s ease;
+  }
+  
+  .text-subtitle {
+    @apply text-lg font-normal text-neutral-700 dark:text-neutral-300;
+    transition: color 0.3s ease;
+  }
+  
+  .text-body {
+    @apply text-sm text-neutral-600 dark:text-neutral-400;
+    transition: color 0.3s ease;
+  }
+  
+  .text-caption {
+    @apply text-xs text-neutral-500 dark:text-neutral-500;
+    transition: color 0.3s ease;
+  }
+  
+  .text-micro {
+    @apply text-xs text-neutral-400 dark:text-neutral-600;
+    transition: color 0.3s ease;
+  }
+  
+  /* Spacing System */
+  .space-section {
+    @apply space-y-12;
+  }
+  
+  .space-component {
+    @apply space-y-6;
+  }
+  
+  .space-element {
+    @apply space-y-3;
+  }
+  
+  .space-tight {
+    @apply space-y-2;
+  }
+  
+  /* Container System - Enhanced for better responsiveness */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4;
+  }
+  
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4;
+  }
+  
+  .container-minimal {
+    @apply max-w-2xl mx-auto px-4;
+  }
+  
+  /* Improved Grid System with better breakpoints */
+  .grid-main {
+    @apply grid grid-cols-1 gap-4;
+  }
+  
+  .grid-cards {
+    @apply grid grid-cols-1 gap-4;
+  }
+  
+  .grid-stats {
+    @apply grid grid-cols-2 gap-4;
+  }
+  
+  /* Minimalist Navigation */
+  .nav-item {
+    @apply relative px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-all duration-200 ease-out rounded-lg dark:text-neutral-400 dark:hover:text-white;
+  }
+  
+  .nav-item-active {
+    @apply text-neutral-900 bg-neutral-100 dark:text-white dark:bg-neutral-800;
+  }
+  
+  /* Mathematical Elements */
+  .math-display {
+    @apply bg-neutral-50 border border-neutral-200 rounded-xl p-6 dark:bg-neutral-850 dark:border-neutral-700;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .formula-card {
+    @apply card card-hover p-8 space-y-4;
+  }
+  
+  /* Status Indicators */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+    transition: background-color 0.3s ease;
+  }
+  
+  .status-active {
+    @apply bg-emerald-500;
+  }
+  
+  .status-inactive {
+    @apply bg-neutral-300 dark:bg-neutral-600;
+  }
+  
+  .status-warning {
+    @apply bg-amber-500;
+  }
+  
+  /* Progress System */
+  .progress-ring {
+    transition: all 0.3s ease;
+  }
+  
+  /* Layout Utilities */
+  .section-padding {
+    @apply py-8;
+  }
+  
+  .component-padding {
+    @apply py-4;
+  }
+  
+  .element-padding {
+    @apply py-2;
+  }
+  
+  /* Responsive Utilities */
+  .p-responsive {
+    @apply p-4;
+  }
+  
+  .m-responsive {
+    @apply m-4;
+  }
+  
+  .gap-responsive {
+    @apply gap-4;
+  }
+}
+
+/* Media Queries - Separated from class definitions */
+@media (min-width: 640px) {
+  .container-main {
+    @apply px-6;
+  }
+  
+  .container-narrow {
+    @apply px-6;
+  }
+  
+  .grid-cards {
+    @apply grid-cols-2 gap-4;
+  }
+  
+  .grid-stats {
+    @apply grid-cols-2 gap-4;
+  }
+  
+  .p-responsive {
+    @apply p-6;
+  }
+  
+  .m-responsive {
+    @apply m-6;
+  }
+  
+  .gap-responsive {
+    @apply gap-6;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-main {
+    @apply grid-cols-2 gap-6;
+  }
+  
+  .section-padding {
+    @apply py-12;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-main {
+    @apply px-8;
+  }
+  
+  .grid-main {
+    @apply grid-cols-3 gap-6;
+  }
+  
+  .grid-cards {
+    @apply grid-cols-3 gap-6;
+  }
+  
+  .grid-stats {
+    @apply grid-cols-4 gap-4;
+  }
+  
+  .section-padding {
+    @apply py-16;
+  }
+  
+  .component-padding {
+    @apply py-8;
+  }
+  
+  .element-padding {
+    @apply py-4;
+  }
+  
+  .p-responsive {
+    @apply p-8;
+  }
+  
+  .m-responsive {
+    @apply m-8;
+  }
+  
+  .gap-responsive {
+    @apply gap-8;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-main {
+    @apply grid-cols-4 gap-8;
+  }
+  
+  .section-padding {
+    @apply py-24;
+  }
+}
+
+/* Improved responsive breakpoints */
+@layer utilities {
+  .hidden-mobile {
+    @apply hidden;
+  }
+  
+  .hidden-desktop {
+    @apply block;
+  }
+  
+  /* Enhanced transforms for desktop */
+  .desktop-hover-scale {
+    @apply transition-transform duration-300;
+  }
+}
+
+/* Media queries for utility classes - un-nested */
+@media (min-width: 768px) {
+  @layer utilities {
+    .tablet {
+      @apply block;
+    }
+    
+    .hidden-mobile {
+      @apply block;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  @layer utilities {
+    .desktop {
+      @apply block;
+    }
+    
+    .hidden-desktop {
+      @apply hidden;
+    }
+    
+    .desktop-hover-scale {
+      @apply hover:scale-105;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  @layer utilities {
+    .widescreen {
+      @apply block;
+    }
+  }
+}
+
+/* Minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-300 dark:bg-neutral-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-400 dark:bg-neutral-600;
+}
+
+/* Math formula styles - improved */
+.katex {
+  font: normal 1em KaTeX_Main, Times New Roman, serif;
+  text-rendering: auto;
+  line-height: 1.2;
+  text-indent: 0;
+}
+
+/* Dark mode for KaTeX */
+.dark .katex {
+  color: #e5e5e5;
+  transition: color 0.3s ease;
+}
+
+.dark .katex .mord,
+.dark .katex .mbin,
+.dark .katex .mrel,
+.dark .katex .mopen,
+.dark .katex .mclose,
+.dark .katex .mpunct,
+.dark .katex .minner {
+  color: #e5e5e5;
+  transition: color 0.3s ease;
+}
+
+.dark .katex .mfrac .frac-line {
+  border-bottom-color: #e5e5e5;
+  transition: border-color 0.3s ease;
+}
+
+.dark .katex .sqrt .sqrt-sign {
+  color: #e5e5e5;
+  transition: color 0.3s ease;
+}
+
+.katex-display {
+  margin: 1em 0;
+  display: block;
+  text-align: center;
+}
+
+/* Prevent overflow issues */
+.katex-display > .katex {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.katex-display > .katex > .katex-html {
+  display: block;
+  position: relative;
+}
+
+/* Adjust spacing of the sqrt sign */
+.katex .sqrt .sqrt-sign {
+  top: 2px;
+}
+
+.katex .sqrt .hide-tail {
+  margin-left: 0;
+}
+
+/* Fix some spacing issues */
+.katex .mord + .mop {
+  margin-left: 0.16667em;
+}
+
+.katex .mop + .mord {
+  margin-left: 0.16667em;
+}
+
+.katex .mop + .mop {
+  margin-left: 0.16667em;
+}
+
+.katex .stretchy {
+  width: 100%;
+  display: block;
+}
+
+/* Prevent overflow for all KaTeX elements */
+.katex, .katex-display, .katex-html {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Ensure proper fractions display */
+.katex .mfrac .frac-line {
+  min-width: 100%;
+}
+
+/* Fix alignment of fraction elements */
+.katex .mfrac .frac-line {
+  margin: 0 -0.1em;
+}
+
+/* Focus styles - minimal */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 dark:focus:ring-neutral-100 dark:focus:ring-offset-neutral-900;
+}
+
+/* Animation utilities - subtle */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Theme switch animation */
+.theme-switch-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.theme-switch-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+.theme-switch-exit {
+  opacity: 1;
+}
+.theme-switch-exit-active {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Mode transition animation */
+@keyframes mode-transition {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mode-transition {
+  animation: mode-transition 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Utility classes for minimalist design */
+.border-minimal {
+  @apply border-neutral-200 dark:border-neutral-700;
+  transition: border-color 0.3s ease;
+}
+
+.bg-minimal {
+  @apply bg-neutral-50 dark:bg-neutral-900;
+  transition: background-color 0.3s ease;
+}
+
+.text-minimal {
+  @apply text-neutral-500 dark:text-neutral-400;
+  transition: color 0.3s ease;
+}
+
+.shadow-minimal {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-minimal {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shadow-subtle {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-subtle {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.divide-minimal > * + * {
+  @apply border-t border-neutral-100 dark:border-neutral-800;
+  transition: border-color 0.3s ease;
+}
+
+/* Interactive states */
+.interactive {
+  @apply transition-all duration-300 ease-out hover:shadow-sm;
+  will-change: transform, box-shadow;
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+}
+
+/* Clean borders */
+.border-clean {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color 0.3s ease;
+}
+
+.dark .border-clean {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Minimal backdrop */
+.backdrop-minimal {
+  backdrop-filter: blur(8px);
+  @apply bg-white/80 dark:bg-neutral-900/80;
+  transition: background-color 0.3s ease;
+}
+
+/* Enhanced text color classes for dark mode */
+.text-primary {
+  @apply text-neutral-900 dark:text-white;
+  transition: color 0.3s ease;
+}
+
+.text-secondary {
+  @apply text-neutral-700 dark:text-neutral-300;
+  transition: color 0.3s ease;
+}
+
+/* Fix for form elements in dark mode */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  @apply text-neutral-500;
+}
+
+/* Enhanced formula rendering for dark mode */
+.dark .formula-box,
+.dark .formula-container {
+  @apply bg-neutral-800 border-neutral-700;
+}
+
+/* Dark mode fixes for exercise cards */
+.dark .bg-green-50 {
+  @apply bg-green-900/20;
+}
+
+.dark .bg-red-50 {
+  @apply bg-red-900/20;
+}
+
+.dark .bg-yellow-50 {
+  @apply bg-yellow-900/20;
+}
+
+.dark .bg-blue-50 {
+  @apply bg-blue-900/20;
+}
+
+.dark .bg-purple-50 {
+  @apply bg-purple-900/20;
+}
+
+.dark .text-green-700,
+.dark .text-green-800,
+.dark .text-green-900 {
+  @apply text-green-300;
+}
+
+.dark .text-red-700,
+.dark .text-red-800,
+.dark .text-red-900 {
+  @apply text-red-300;
+}
+
+.dark .text-blue-700,
+.dark .text-blue-800,
+.dark .text-blue-900 {
+  @apply text-blue-300;
+}
+
+.dark .text-yellow-700,
+.dark .text-yellow-800,
+.dark .text-yellow-900 {
+  @apply text-yellow-300;
+}
+
+.dark .text-purple-700,
+.dark .text-purple-800,
+.dark .text-purple-900 {
+  @apply text-purple-300;
+}
+
+/* Improved dark mode border colors for various UI elements */
+.dark .border-green-200 {
+  @apply border-green-800;
+}
+
+.dark .border-red-200 {
+  @apply border-red-800;
+}
+
+.dark .border-blue-200 {
+  @apply border-blue-800;
+}
+
+.dark .border-yellow-200 {
+  @apply border-yellow-800;
+}
+
+.dark .border-purple-200 {
+  @apply border-purple-800;
+}
+
+/* Theme transition overlay */
+.theme-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
+}
+
+.theme-transition-overlay.visible {
+  opacity: 0.15;
+}
+
+.theme-transition-overlay.dark {
+  background-color: #000;
+}
+
+.theme-transition-overlay.light {
+  background-color: #fff;
+}
+
+/* Apply GPU acceleration for smoother transitions */
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Fast color transitions for text elements */
+.fast-color-transition {
+  transition: color 0.2s ease;
+}
+
+/* High-performance theme transitions */
+.theme-aware {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+
+/* Logo animation for dark/light switch */
+.logo-transition {
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: filter;
+}
+
+/* Optimize SVG transitions */
+svg path, svg line, svg circle, svg rect {
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+
+/* Smoothing for math formula rendering in dark mode */
+.dark .katex-html * {
+  transition: color 0.2s ease;
+}
+
+/* Desktop-specific layout improvements */
+@media (min-width: 1024px) {
+  /* Enhance desktop card layouts */
+  .card {
+    @apply p-6;
+  }
+  
+  /* Desktop navigation improvements */
+  .nav-item {
+    @apply text-base px-5 py-2.5;
+  }
+  
+  /* Enhanced typography for desktop */
+  .text-display {
+    @apply text-5xl;
+  }
+  
+  .text-title {
+    @apply text-3xl;
+  }
+  
+  .text-subtitle {
+    @apply text-xl;
+  }
+  
+  /* Grid layouts for desktop */
+  .desktop-grid-equal {
+    @apply grid grid-cols-2 gap-8;
+  }
+  
+  .desktop-grid-sidebar {
+    @apply grid grid-cols-3 gap-8;
+  }
+  
+  /* Desktop-specific spacing */
+  .desktop-spacing-lg {
+    @apply space-y-16;
+  }
+  
+  /* Larger formula displays on desktop */
+  .math-display {
+    @apply p-8;
+  }
+}
+
+/* Optimize app layouts for large screens */
+@media (min-width: 1280px) {
+  /* Three-column layout for app grid */
+  .app-grid {
+    @apply grid-cols-3 gap-8;
+  }
+  
+  /* Enhanced sidebar proportions */
+  .desktop-sidebar {
+    @apply w-1/4;
+  }
+  
+  .desktop-main {
+    @apply w-3/4;
+  }
+  
+  /* More spacious containers */
+  .container-main {
+    @apply max-w-7xl;
+  }
+  
+  /* Larger card padding */
+  .card-lg {
+    @apply p-10;
+  }
+  
+  /* Dashboard layout improvements */
+  .dashboard-grid {
+    @apply grid-cols-4 gap-8;
+  }
+}
+
+/* High-resolution screen optimizations */
+@media (min-width: 1536px) {
+  /* Maximum container width */
+  .container-main {
+    @apply max-w-8xl;
+  }
+  
+  /* Four-column layouts for large screens */
+  .widescreen-grid {
+    @apply grid-cols-4 gap-10;
+  }
+  
+  /* Enhanced typography for large screens */
+  .text-display {
+    @apply text-6xl;
+  }
+}
